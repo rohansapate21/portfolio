@@ -52,7 +52,7 @@ export const heroStats: HeroStat[] = []
 // ABOUT DATA
 // ─────────────────────────────────────────────────────────────────────────────
 export const aboutData = {
-  avatar: 'public/avatar.png', // Place your photo at portfolio-v2/public/avatar.jpg (or .png)
+  avatar: 'public/avatar.png',
   bio: `I'm a final-year AI & Data Science student, with a passion for building things that matter. 
   I specialise in full-stack development and AI/ML, with hands-on experience in real-time systems, 
   Data processing workflows, and modern web technologies.`,
