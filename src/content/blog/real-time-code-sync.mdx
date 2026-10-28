@@ -1,0 +1,31 @@
+---
+title: "Real-Time Code Synchronisation with WebSockets and CRDTs"
+date: "2026-04-10"
+readTime: "6 min read"
+tags: ["WebSockets", "Node.js", "System Design"]
+featured: false
+excerpt: "Lessons learned building a collaborative code editor that stays in sync across flaky connections."
+---
+
+## The Challenge
+
+In technical interviews, having both candidate and interviewer type simultaneously into an online code buffer without overwriting changes is surprisingly difficult.
+
+Simple timestamp-based reconciliation leads to lost keystrokes.
+
+## Architectural Approach
+
+We adopted a hybrid model:
+- **WebSocket transport** for minimal latency full-duplex messaging.
+- **Operational Transformation / CRDT primitives** to resolve concurrent edits on character ranges.
+
+```javascript
+socket.on('code-delta', (delta) => {
+  editor.applyDelta(delta);
+});
+```
+
+## Takeaways
+
+- Always acknowledge change delivery with sequence IDs.
+- Buffer changes locally when the socket drops and resynchronize on reconnection.

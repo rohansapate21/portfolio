@@ -1,0 +1,16 @@
+{
+  "name": "Rohan Sapate — Portfolio",
+  "short_name": "RS Portfolio",
+  "description": "Software Engineer & AI/ML Enthusiast",
+  "theme_color": "#050810",
+  "background_color": "#050810",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

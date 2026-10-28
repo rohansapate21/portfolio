@@ -1,0 +1,30 @@
+---
+title: "Training a Custom spaCy NER Model for Resume Parsing"
+date: "2026-03-05"
+readTime: "10 min read"
+tags: ["NLP", "spaCy", "Python", "AI/ML"]
+featured: false
+excerpt: "A practical guide to annotating data, training named entity recognition, and deploying with FastAPI."
+---
+
+## Why Custom Named Entity Recognition?
+
+Standard spaCy models (`en_core_web_sm`) excel at general entities like `PERSON` and `ORG`, but struggle to separate candidate skills from job titles or degree classifications.
+
+## Training Pipeline
+
+1. **Annotation:** Labelled 500+ unstructured resumes using Prodigy with labels like `SKILL`, `DEGREE`, `EXPERIENCE_YEARS`.
+2. **Model Training:** Configured spaCy's transition-based NER parser with pre-trained word embeddings.
+3. **Deployment:** Exposed the pipeline through a clean FastAPI REST endpoint.
+
+```python
+import spacy
+
+nlp = spacy.load("./model-best")
+doc = nlp(resume_text)
+skills = [ent.text for ent in doc.ents if ent.label_ == "SKILL"]
+```
+
+## Impact
+
+Automated extraction speed improved from minutes of manual reading to 350ms per resume with 92% precision.

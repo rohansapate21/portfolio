@@ -1,0 +1,71 @@
+---
+title: "Building Real-Time AI Proctoring with TensorFlow.js"
+date: "2026-05-28"
+readTime: "8 min read"
+tags: ["AI/ML", "TensorFlow.js", "JavaScript", "Real-time"]
+featured: true
+excerpt: "How I built an in-browser cheating detection system using COCO-SSD and BlazeFace — no server-side video processing needed."
+---
+
+## The Problem
+
+Traditional online interviews rely on human proctors or simple screen-recording tools.
+These approaches either don't scale or miss subtle cheating signals like looking away from the screen, having multiple people in frame, or using a second device.
+
+## The Idea
+
+What if we could run object detection and face detection **in the browser** — zero latency, zero server cost?
+
+## Model Selection
+
+I chose two TensorFlow.js models:
+
+- **COCO-SSD** — detects objects (phone, book, second person)
+- **BlazeFace** — detects faces and counts them in frame
+
+```javascript
+const cocoModel = await cocoSsd.load();
+const blazeModel = await blazeface.load();
+```
+
+## Implementation
+
+### Setting Up the Video Stream
+
+```javascript
+const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+videoRef.current.srcObject = stream;
+```
+
+### Running Inference in a Loop
+
+```javascript
+async function detectFrame() {
+  const predictions = await cocoModel.detect(videoRef.current);
+  const faces = await blazeModel.estimateFaces(videoRef.current, false);
+
+  // Flag if > 1 face or phone detected
+  if (faces.length > 1 || predictions.some(p => p.class === 'cell phone')) {
+    triggerAlert();
+  }
+
+  requestAnimationFrame(detectFrame);
+}
+```
+
+## Results
+
+- Inference runs at ~15 FPS on a mid-range laptop
+- False positive rate: ~3% in good lighting conditions
+- No video data ever leaves the browser
+
+## Lessons Learned
+
+1. Run inference on a `<canvas>` copy, not the live `<video>` element — avoids frame drops
+2. Throttle inference to every 3 frames to reduce CPU pressure
+3. Warm up the model on page load, not on first detection
+
+## What's Next
+
+- Add gaze estimation to detect screen look-away
+- Mobile support (BlazeFace works well on iOS/Android)
