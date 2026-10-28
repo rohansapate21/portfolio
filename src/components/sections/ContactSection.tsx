@@ -78,10 +78,10 @@ export default function ContactSection() {
           label="Get In Touch"
           title={
             <>
-              Let's Build Something <span className="gradient-text">Great</span>
+              Let's <span className="gradient-text">Connect</span>
             </>
           }
-          subtitle="Whether you have an open opportunity, project idea, or just want to chat about AI/ML — my inbox is open."
+          subtitle="Whether you have an open opportunity, project idea, or any intern / full-time position — my inbox is open."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl mx-auto">
@@ -90,7 +90,7 @@ export default function ContactSection() {
             <div>
               <h3 className="text-lg font-bold text-text-primary mb-2">Contact Details</h3>
               <p className="text-xs text-text-secondary leading-relaxed mb-6">
-                Feel free to email me directly or schedule a virtual meet. I usually reply within 24 hours.
+                Feel free to email, call or whatsapp me directly. I usually reply within 24 hours.
               </p>
 
               <div className="space-y-4 mb-8">
@@ -132,7 +132,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            
+
           </FadeIn>
 
           {/* Right Form */}

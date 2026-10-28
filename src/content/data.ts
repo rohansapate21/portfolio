@@ -52,7 +52,7 @@ export const heroStats: HeroStat[] = []
 // ABOUT DATA
 // ─────────────────────────────────────────────────────────────────────────────
 export const aboutData = {
-  avatar: '/avatar.jpg', // Place your photo at portfolio-v2/public/avatar.jpg (or .png)
+  avatar: 'public/avatar.png', // Place your photo at portfolio-v2/public/avatar.jpg (or .png)
   bio: `I'm a final-year AI & Data Science student, with a passion for building things that matter. 
   I specialise in full-stack development and AI/ML, with hands-on experience in real-time systems, 
   Data processing workflows, and modern web technologies.`,
@@ -112,7 +112,7 @@ export const skillsDataV2: Record<
       { name: 'React', tier: 'expert', iconKey: 'SiReact' },
       { name: 'Next.js', tier: 'expert', iconKey: 'SiNextdotjs' },
       { name: 'Tailwind CSS', tier: 'expert', iconKey: 'SiTailwindcss' },
-      
+
       { name: 'HTML5', tier: 'expert', iconKey: 'SiHtml5' },
       { name: 'CSS3', tier: 'expert', iconKey: 'SiCss3' },
     ],
@@ -131,16 +131,16 @@ export const skillsDataV2: Record<
     label: 'Databases',
     skills: [
       { name: 'MongoDB', tier: 'expert', iconKey: 'SiMongodb' },
-      
+
       { name: 'MySQL', tier: 'proficient', iconKey: 'SiMysql' },
-      
+
     ],
   },
   ai_ml: {
     label: 'AI/ML',
     skills: [
       { name: 'TensorFlow', tier: 'proficient', iconKey: 'SiTensorflow' },
-     
+
       { name: 'Pandas', tier: 'expert', iconKey: 'SiPandas' },
       { name: 'NumPy', tier: 'expert', iconKey: 'SiNumpy' },
     ],
@@ -152,7 +152,7 @@ export const skillsDataV2: Record<
       { name: 'Docker', tier: 'proficient', iconKey: 'SiDocker' },
       { name: 'Linux', tier: 'proficient', iconKey: 'SiLinux' },
       { name: 'VS Code', tier: 'expert', iconKey: 'SiVisualstudiocode' },
-      
+
     ],
   },
   cloud: {
@@ -399,7 +399,7 @@ export const achievementsData: Achievement[] = [
     description: 'Participated and reached finals in multiple college hackathons.',
     color: '#8b5cf6',
   },
-  
+
 ]
 
 // ─────────────────────────────────────────────────────────────────────────────
